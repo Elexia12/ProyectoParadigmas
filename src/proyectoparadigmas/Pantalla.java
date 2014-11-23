@@ -34,5 +34,7 @@ public class Pantalla extends JPanel{
     @Override
     public void paint (Graphics g){
         g.drawImage(maze, 0, 0, maze.getWidth(), maze.getHeight(), this);
+        g.setColor(Color.RED);
+        g.fillOval((maze.getWidth()/2)-20, 20, 10, 10);
     }
 }
