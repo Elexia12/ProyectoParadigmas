@@ -15,6 +15,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -30,9 +31,15 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     BufferedImage maze;
     Timer t;
     Participante jugador1;
+    Participante computadora1;
     
     public Pantalla(){
-        jugador1 = new Participante(false);
+        ArrayList<String> prueba = new ArrayList<String>();
+        for(int i=0; i<3; i++){
+            prueba.add("down");
+        }
+        jugador1 = new Participante(false, null);
+        computadora1 = new Participante(true, prueba);
         t = new Timer(50, this);
         t.start();
         setBackground(Color.WHITE);
@@ -44,6 +51,7 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+        computadora1.start();
     }
     
     @Override
@@ -53,12 +61,17 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.RED);
         g2.fill(new Ellipse2D.Double(jugador1.x, jugador1.y, 10, 10));
+        g2.setColor(Color.yellow);
+        g2.fill(new Ellipse2D.Double(computadora1.x, computadora1.y, 10, 10));
+        System.out.println(computadora1.y);
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         repaint();
         jugador1.mover();
+        computadora1.mover();
     }
 
     public void up(){
@@ -86,18 +99,28 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     public void keyPressed(KeyEvent ke) {
         int code = ke.getKeyCode();
         
-        if(code == KeyEvent.VK_UP && maze.getRGB(jugador1.x + 5, jugador1.y) == -1){
-            up();
-            System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
-        }
-        if(code == KeyEvent.VK_DOWN && maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -1){
-            down();
-        }
-        if(code == KeyEvent.VK_LEFT && maze.getRGB(jugador1.x, jugador1.y + 5) == -1){
-            left();
-        }
-        if(code == KeyEvent.VK_RIGHT && maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -1){
-            right();
+        switch(code){
+            case KeyEvent.VK_UP:
+                if(maze.getRGB(jugador1.x + 5, jugador1.y) == -1){
+                    up();
+                    System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
+                }
+                break;
+            case KeyEvent.VK_DOWN:
+                if( maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -1){
+                    down();
+                }
+                break;
+            case KeyEvent.VK_LEFT:
+                if(maze.getRGB(jugador1.x, jugador1.y + 5) == -1){
+                    left();
+                }                
+                break;
+            case KeyEvent.VK_RIGHT:
+                if(maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -1){
+                    right();
+                }
+                break;
         }
     }
 

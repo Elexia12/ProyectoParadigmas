@@ -4,25 +4,29 @@
  */
 package proyectoparadigmas;
 
-import javax.swing.Timer;
+import java.util.ArrayList;
 
 /**
  *
  * @author Xia
  */
-public class Participante {
+public class Participante extends Thread{
     
     int x, y; 
     double velx, vely;
+    boolean esCompu;
+    ArrayList<String> solucion = new ArrayList<String>();
     
-    public Participante(boolean computadora){
+    public Participante(boolean computadora, ArrayList<String> movimientos){
         x = 240;
         y = 20;
         velx = 0;
         vely = 0;
+        esCompu = computadora;
         
         if(computadora){
             //Cargar la solucion con la que se va a mover, puede ser una lista estatica en otra clase o no se
+            solucion = movimientos;
         }
     }
     
@@ -48,7 +52,7 @@ public class Participante {
     }
     
     public void abajo(){
-        vely = 1;
+        this.vely = 1;
         velx = 0;
     }
     
@@ -58,7 +62,35 @@ public class Participante {
     }
     
     public void derecha(){
-        velx = 1  ;
+        velx = 1;
         vely = 0;
+    }
+    
+    public void ejecutarComputadora(){
+        for(String mov : solucion){
+            switch(mov){
+                case "up":
+                    this.arriba();
+                    break;
+                case "down":
+                    this.abajo();
+                    break;
+                case "left":
+                    this.izquierda();
+                    break;
+                case "right":
+                    this.derecha();
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void run() {
+        if(esCompu){
+            this.ejecutarComputadora();
+            System.out.println("Soy computadora");
+        }
+        
     }
 }
