@@ -33,6 +33,6 @@ public class Pantalla extends JPanel{
     
     @Override
     public void paint (Graphics g){
-        g.drawImage(maze, 250, 100, 322, 322, this);
+        g.drawImage(maze, 0, 0, maze.getWidth(), maze.getHeight(), this);
     }
 }

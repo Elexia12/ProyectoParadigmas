@@ -19,11 +19,11 @@ public class Laberinto {
     public static int height;
     
     public Laberinto(){
-        titulo = "Maze Runner";
-        width = 800;
-        height = 600;
-        
         pantalla = new Pantalla();
+        
+        titulo = "Maze Runner";
+        width = pantalla.maze.getWidth();
+        height = pantalla.maze.getHeight() + 25;
         
         frame = new JFrame();
         frame.setTitle(titulo);
