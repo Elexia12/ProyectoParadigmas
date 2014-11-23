@@ -5,6 +5,8 @@
 package proyectoparadigmas;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,6 +17,7 @@ public class Participante extends Thread{
     int x, y; 
     double velx, vely;
     boolean esCompu;
+    int numMovs;
     ArrayList<String> solucion = new ArrayList<String>();
     
     public Participante(boolean computadora, ArrayList<String> movimientos){
@@ -22,11 +25,13 @@ public class Participante extends Thread{
         y = 20;
         velx = 0;
         vely = 0;
+        numMovs = 0;
         esCompu = computadora;
         
         if(computadora){
             //Cargar la solucion con la que se va a mover, puede ser una lista estatica en otra clase o no se
             solucion = movimientos;
+            numMovs = solucion.size();
         }
     }
     
@@ -71,15 +76,35 @@ public class Participante extends Thread{
             switch(mov){
                 case "up":
                     this.arriba();
+                    try {
+                        Thread.sleep((long)500);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 case "down":
                     this.abajo();
+                    try {
+                        Thread.sleep((long)500);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 case "left":
                     this.izquierda();
+                    try {
+                        Thread.sleep((long)500);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 case "right":
                     this.derecha();
+                    try {
+                        Thread.sleep((long)500);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
             }
         }
@@ -88,8 +113,13 @@ public class Participante extends Thread{
     @Override
     public void run() {
         if(esCompu){
-            this.ejecutarComputadora();
-            System.out.println("Soy computadora");
+            try {
+                this.ejecutarComputadora();
+                Thread.sleep((long)5000);
+                System.out.println("Soy computadora");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }
