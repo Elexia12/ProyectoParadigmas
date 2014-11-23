@@ -32,6 +32,7 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     Timer t;
     Participante jugador1;
     Participante computadora1;
+    AlgoritmoGenetico algGene;
     
     public Pantalla(){
         ArrayList<String> prueba = new ArrayList<String>();
@@ -51,7 +52,7 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        computadora1.start();
+        algGene = new AlgoritmoGenetico(10, computadora1, jugador1);
     }
     
     @Override
