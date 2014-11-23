@@ -38,6 +38,7 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         ArrayList<String> prueba = new ArrayList<String>();
         for(int i=0; i<3; i++){
             prueba.add("down");
+            prueba.add("up");
         }
         jugador1 = new Participante(false, null);
         computadora1 = new Participante(true, prueba);

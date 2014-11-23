@@ -54,73 +54,51 @@ public class Participante extends Thread{
     public void arriba(){
         vely = -0.5;
         velx = 0;
+        numMovs++;
     }
     
     public void abajo(){
-        this.vely = 1;
+        vely = 1;
         velx = 0;
+        numMovs++;
     }
     
     public void izquierda(){
         velx = -0.5;
         vely = 0;
+        numMovs++;
     }
     
     public void derecha(){
         velx = 1;
         vely = 0;
+        numMovs++;
     }
     
-    public void ejecutarComputadora(){
-        for(String mov : solucion){
+    public void ejecutarComputadora(String mov){
             switch(mov){
                 case "up":
                     this.arriba();
-                    try {
-                        Thread.sleep((long)500);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                     break;
                 case "down":
                     this.abajo();
-                    try {
-                        Thread.sleep((long)500);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                     break;
                 case "left":
                     this.izquierda();
-                    try {
-                        Thread.sleep((long)500);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                     break;
                 case "right":
                     this.derecha();
-                    try {
-                        Thread.sleep((long)500);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                     break;
             }
         }
-    }
+    
 
     @Override
     public void run() {
-        if(esCompu){
-            try {
-                this.ejecutarComputadora();
-                Thread.sleep((long)5000);
-                System.out.println("Soy computadora");
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Participante.class.getName()).log(Level.SEVERE, null, ex);
+        for(String mov : solucion){
+            if(esCompu){
+                this.ejecutarComputadora(mov);
             }
         }
-        
     }
 }
