@@ -12,24 +12,16 @@ package proyectoparadigmas;
  */
 public class Cromosoma {
     
-    private String cuadroMagico;
-    private int dimension;
-    private double numeroMagico;
+    private String codificacion;
     private static final double PROB_CRUCE = 0.95;
     private static final double PROB_MUTA = 0.05;
     
-    public Cromosoma(int dimension){
-        this.dimension = dimension;
-        numeroMagico = 0;
-        cuadroMagico = "";
+    public Cromosoma(){
+        codificacion = "";
     }
-    
-    public double getNumeroMagico(){
-       return numeroMagico;
-    }
-    
-    public String getCuadroMagico(){
-       return cuadroMagico;
+        
+    public String getCodificacion(){
+       return codificacion;
     }
     
     public void cruce(Cromosoma padre, Cromosoma madre){
@@ -44,7 +36,10 @@ public class Cromosoma {
     
     public void mutacion(){
        String temp = "";
-       
+       double prob = Math.random();
+       if(prob < PROB_MUTA){
+          
+       }
     }
     
     public void generarCuadroMagico(){
