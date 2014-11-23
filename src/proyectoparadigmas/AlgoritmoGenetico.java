@@ -19,13 +19,17 @@ public class AlgoritmoGenetico extends Thread{
     private boolean[] progenitor;
     private int ciclo = 1;
     private int dimension;
+    private Participante computadora;
+    private Participante jugador;
     
-    public AlgoritmoGenetico(int dimension) {
+    public AlgoritmoGenetico(int dimension, Participante compu, Participante jugador) {
         this.dimension = dimension;
         poblacion = new Cromosoma[individuos];
         aptitud = new int[individuos];
         padres = new int[individuos];
         progenitor = new boolean[individuos];
+        computadora = compu;
+        this.jugador = jugador;
         this.start();
     }
     
@@ -40,7 +44,7 @@ public class AlgoritmoGenetico extends Thread{
        ordenar();
        mejor = mejor();
        ++ciclo;
-       while(aptitud[individuos-1] != 2*dimension+16){
+       while(ciclo <= 200 && aptitud[individuos-1] != 2*dimension+16){
           max = 1;
           // seleccion de padres y cruce
           Cromosoma[] hijos = new Cromosoma[50];
@@ -55,6 +59,7 @@ public class AlgoritmoGenetico extends Thread{
              hijos[i].cruce(seleccionarPadres(max),seleccionarPadres(max));
              //mutacion
              hijos[i].mutacion();
+             System.out.println("cilclo: " + ciclo);
           }
           //sustitucion de individuos
           sustitucion(hijos);
@@ -119,6 +124,8 @@ public class AlgoritmoGenetico extends Thread{
     
     public void run(){
        algoritmo();
+       computadora.start();
+       jugador.start();
     }
     
 }
