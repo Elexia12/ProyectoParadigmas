@@ -33,7 +33,7 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     
     public Pantalla(){
         jugador1 = new Participante(false);
-        t = new Timer(2, this);
+        t = new Timer(50, this);
         t.start();
         setBackground(Color.WHITE);
         try {
@@ -86,14 +86,19 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     public void keyPressed(KeyEvent ke) {
         int code = ke.getKeyCode();
         
-        if(code == KeyEvent.VK_UP)
+        if(code == KeyEvent.VK_UP && maze.getRGB(jugador1.x + 5, jugador1.y) == -1){
             up();
-        if(code == KeyEvent.VK_DOWN)
+            System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
+        }
+        if(code == KeyEvent.VK_DOWN && maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -1){
             down();
-        if(code == KeyEvent.VK_LEFT)
+        }
+        if(code == KeyEvent.VK_LEFT && maze.getRGB(jugador1.x, jugador1.y + 5) == -1){
             left();
-        if(code == KeyEvent.VK_RIGHT)
+        }
+        if(code == KeyEvent.VK_RIGHT && maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -1){
             right();
+        }
     }
 
     @Override

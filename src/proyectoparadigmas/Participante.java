@@ -12,7 +12,8 @@ import javax.swing.Timer;
  */
 public class Participante {
     
-    double x, y, velx, vely;
+    int x, y; 
+    double velx, vely;
     
     public Participante(boolean computadora){
         x = 240;
@@ -24,6 +25,12 @@ public class Participante {
             //Cargar la solucion con la que se va a mover, puede ser una lista estatica en otra clase o no se
         }
     }
+    
+   /* public boolean colision(int pixel1, int pixel2){
+        boolean hayColision = false;
+        if(pixel1 != )
+        return hayColision;
+    }*/
     
     public void mover(){
         x += velx;
@@ -41,7 +48,7 @@ public class Participante {
     }
     
     public void abajo(){
-        vely = 0.5;
+        vely = 1;
         velx = 0;
     }
     
@@ -51,7 +58,7 @@ public class Participante {
     }
     
     public void derecha(){
-        velx = 0.5  ;
+        velx = 1  ;
         vely = 0;
     }
 }
