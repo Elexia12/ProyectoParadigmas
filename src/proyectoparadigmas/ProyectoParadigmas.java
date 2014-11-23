@@ -15,5 +15,6 @@ public class ProyectoParadigmas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Laberinto maze = new Laberinto();
     }
 }
