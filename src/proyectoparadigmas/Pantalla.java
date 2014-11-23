@@ -53,7 +53,7 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        algGene = new AlgoritmoGenetico(10, computadora1, jugador1);
+        algGene = new AlgoritmoGenetico(10, computadora1);
     }
     
     @Override
