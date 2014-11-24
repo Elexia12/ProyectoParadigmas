@@ -33,15 +33,30 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     Participante jugador1;
     Participante computadora1;
     AlgoritmoGenetico algGene;
+<<<<<<< HEAD
     int contador = 1;
+=======
+    ArrayList<String> prueba = new ArrayList<String>();
+    int indice;
+>>>>>>> 63ea4214046d523dfbacc72f4e86e8254dfd97ec
     
     public Pantalla(){
-        ArrayList<String> prueba = new ArrayList<String>();
+        
         for(int i=0; i<3; i++){
             prueba.add("down");
+            prueba.add("down");
+            prueba.add("down");
+            prueba.add("down");
+            prueba.add("down");
+            prueba.add("up");
+            prueba.add("up");
+            prueba.add("up");
+            prueba.add("up");
+            prueba.add("up");
         }
-        jugador1 = new Participante(false, null);
-        computadora1 = new Participante(true, prueba);
+        indice = 0;
+        jugador1 = new Participante(false);
+        computadora1 = new Participante(true);
         t = new Timer(50, this);
         t.start();
         setBackground(Color.WHITE);
@@ -72,7 +87,11 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     public void actionPerformed(ActionEvent ae) {
         repaint();
         jugador1.mover();
-        computadora1.mover();
+        if(indice < prueba.size()){
+            computadora1.ejecutarComputadora(prueba.get(indice));
+            computadora1.mover();
+        }
+        indice++;
     }
 
     public void up(){

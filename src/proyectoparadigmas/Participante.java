@@ -5,6 +5,8 @@
 package proyectoparadigmas;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,18 +17,21 @@ public class Participante extends Thread{
     int x, y; 
     double velx, vely;
     boolean esCompu;
+    int numMovs;
     ArrayList<String> solucion = new ArrayList<String>();
     
-    public Participante(boolean computadora, ArrayList<String> movimientos){
+    public Participante(boolean computadora){
         x = 240;
         y = 20;
         velx = 0;
         vely = 0;
+        numMovs = 0;
         esCompu = computadora;
         
         if(computadora){
             //Cargar la solucion con la que se va a mover, puede ser una lista estatica en otra clase o no se
-            solucion = movimientos;
+           // solucion = movimientos;
+            numMovs = solucion.size();
         }
     }
     
@@ -49,25 +54,28 @@ public class Participante extends Thread{
     public void arriba(){
         vely = -0.5;
         velx = 0;
+        numMovs++;
     }
     
     public void abajo(){
-        this.vely = 1;
+        vely = 1;
         velx = 0;
+        numMovs++;
     }
     
     public void izquierda(){
         velx = -0.5;
         vely = 0;
+        numMovs++;
     }
     
     public void derecha(){
         velx = 1;
         vely = 0;
+        numMovs++;
     }
     
-    public void ejecutarComputadora(){
-        for(String mov : solucion){
+    public void ejecutarComputadora(String mov){
             switch(mov){
                 case "up":
                     this.arriba();
@@ -83,8 +91,9 @@ public class Participante extends Thread{
                     break;
             }
         }
-    }
+    
 
+<<<<<<< HEAD
     @Override
     public void run() {
         if(esCompu){
@@ -92,4 +101,7 @@ public class Participante extends Thread{
         }
         
     }
+=======
+    
+>>>>>>> 63ea4214046d523dfbacc72f4e86e8254dfd97ec
 }
