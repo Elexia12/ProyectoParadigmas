@@ -91,8 +91,11 @@ public class Participante extends Thread{
                     break;
             }
         }
+<<<<<<< HEAD
     
     public void setSolucion(ArrayList<String> movimientos){
        solucion = movimientos;
     }
+=======
+>>>>>>> 23b255742799aa903d1ac3f05836ba11c6954b58
 }
