@@ -91,14 +91,4 @@ public class Participante extends Thread{
                     break;
             }
         }
-    
-
-    @Override
-    public void run() {
-        if(esCompu){
-            this.ejecutarComputadora(solucion);
-        }
-        
-    }
-    
 }
