@@ -33,12 +33,8 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     Participante jugador1;
     Participante computadora1;
     AlgoritmoGenetico algGene;
-<<<<<<< HEAD
-    int contador = 1;
-=======
     ArrayList<String> prueba = new ArrayList<String>();
     int indice;
->>>>>>> 63ea4214046d523dfbacc72f4e86e8254dfd97ec
     
     public Pantalla(){
         
@@ -118,8 +114,6 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     @Override
     public void keyPressed(KeyEvent ke) {
         int code = ke.getKeyCode();
-        System.out.println(contador);
-        contador++;
         
         switch(code){
             case KeyEvent.VK_UP:

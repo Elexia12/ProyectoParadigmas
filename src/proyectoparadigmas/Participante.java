@@ -93,15 +93,12 @@ public class Participante extends Thread{
         }
     
 
-<<<<<<< HEAD
     @Override
     public void run() {
         if(esCompu){
-            this.ejecutarComputadora();
+            this.ejecutarComputadora(solucion);
         }
         
     }
-=======
     
->>>>>>> 63ea4214046d523dfbacc72f4e86e8254dfd97ec
 }
