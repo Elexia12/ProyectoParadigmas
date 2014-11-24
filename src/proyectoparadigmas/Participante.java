@@ -64,6 +64,7 @@ public class Participante extends Thread{
     }
     
     public void ejecutarComputadora(String mov){
+        if(mov != null){
             switch(mov){
                 case "up":
                     this.arriba();
@@ -79,6 +80,7 @@ public class Participante extends Thread{
                     break;
             }
         }
+    }
     
     public void setSolucion(ArrayList<String> movimientos){
        solucion = movimientos;

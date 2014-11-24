@@ -167,7 +167,7 @@ public class Cromosoma {
            }
        }
        //Diferencia entre el final deseado y el obtenido por el cromosoma
-       aptitud = (cromFinX + posFinX) - (cromFinY +posFinY);
+       aptitud = (posFinX - cromFinX) + (posFinY - cromFinY);
        return aptitud;
     }
 }

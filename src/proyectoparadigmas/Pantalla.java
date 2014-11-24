@@ -37,18 +37,11 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     int indice;
     
     public Pantalla(){
-        
-        for(int i=0; i<3; i++){
-            prueba.add("down");
-            prueba.add("down");
-            prueba.add("down");
-            prueba.add("down");
-            prueba.add("down");
-        }
+
         indice = 0;
         jugador1 = new Participante(false);
         computadora1 = new Participante(true);
-        t = new Timer(100, this);
+        t = new Timer(25, this);
         t.start();
         setBackground(Color.WHITE);
         try {
