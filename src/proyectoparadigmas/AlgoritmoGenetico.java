@@ -19,6 +19,7 @@ public class AlgoritmoGenetico extends Thread{
     private boolean[] progenitor;
     private int ciclo = 1;
     private int dimension;
+    private boolean empezar;
     private Participante computadora;
     
     public AlgoritmoGenetico(int dimension, Participante compu) {
@@ -28,7 +29,12 @@ public class AlgoritmoGenetico extends Thread{
         padres = new int[individuos];
         progenitor = new boolean[individuos];
         computadora = compu;
+        empezar = false;
         this.start();
+    }
+    
+    public boolean empiece(){
+        return empezar;
     }
     
     private void algoritmo(){
@@ -65,6 +71,7 @@ public class AlgoritmoGenetico extends Thread{
           mejor = mejor();
           ++ciclo;
        }
+       empezar = true;
     }
     
     private void sustitucion(Cromosoma[] hijos){
@@ -115,7 +122,7 @@ public class AlgoritmoGenetico extends Thread{
        }
     }
     
-    private Cromosoma mejor(){
+    public Cromosoma mejor(){
        return poblacion[individuos-1];
     }
     

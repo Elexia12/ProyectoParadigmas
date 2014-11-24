@@ -48,8 +48,8 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         indice = 0;
         jugador1 = new Participante(false);
         computadora1 = new Participante(true);
-        t = new Timer(50, this);
-        t.start();
+       // t = new Timer(50, this);
+       // t.start();
         setBackground(Color.WHITE);
         try {
             maze = ImageIO.read(new FileInputStream("Laberintos/maze1.png"));
@@ -61,6 +61,8 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         setFocusTraversalKeysEnabled(false);
         algGene = new AlgoritmoGenetico(10, computadora1);
         jugador1.parar();
+        algGene.run();
+        prueba = algGene.mejor().getCodificacion();
     }
     
     @Override
@@ -79,12 +81,14 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         repaint();
-        jugador1.mover();
-        if(indice < prueba.size()){
-            computadora1.ejecutarComputadora(prueba.get(indice));
-            computadora1.mover();
+        if(algGene.empiece()){
+            jugador1.mover();
+            if(indice < prueba.size()){
+                computadora1.ejecutarComputadora(prueba.get(indice));
+                computadora1.mover();
+            }
+            indice++;
         }
-        indice++;
     }
 
     public void up(){
@@ -119,15 +123,12 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
                 break;
             case KeyEvent.VK_DOWN:
                 if( maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -12629812 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -14503604){
-
                     down();
-                     System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
                 }
                 break;
             case KeyEvent.VK_LEFT:
                 if(maze.getRGB(jugador1.x, jugador1.y + 5) == -1 || maze.getRGB(jugador1.x, jugador1.y + 5) == -12629812 || maze.getRGB(jugador1.x, jugador1.y + 5) == -14503604){
                     left();
-                     System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
                 }                
                 break;
             case KeyEvent.VK_RIGHT:
