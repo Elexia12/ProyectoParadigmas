@@ -48,8 +48,8 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         indice = 0;
         jugador1 = new Participante(false);
         computadora1 = new Participante(true);
-       // t = new Timer(50, this);
-       // t.start();
+        t = new Timer(100, this);
+        t.start();
         setBackground(Color.WHITE);
         try {
             maze = ImageIO.read(new FileInputStream("Laberintos/maze1.png"));
@@ -81,14 +81,35 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         repaint();
-        if(algGene.empiece()){
+       // if(algGene.empiece()){
             jugador1.mover();
             if(indice < prueba.size()){
-                computadora1.ejecutarComputadora(prueba.get(indice));
-                computadora1.mover();
+                
+                if(maze != null){
+                    if(maze.getRGB(computadora1.x, computadora1.y + 5) == -12629812 || maze.getRGB(computadora1.x, computadora1.y + 5) == -1 || maze.getRGB(computadora1.x, computadora1.y + 5) == -14503604){
+                        computadora1.ejecutarComputadora(prueba.get(indice));
+                        computadora1.mover(); 
+                        //indice++;
+                    }
+                    if(maze.getRGB(computadora1.x + 5, computadora1.y) == -12629812 || maze.getRGB(computadora1.x + 5, computadora1.y) == -1 || maze.getRGB(computadora1.x + 5, computadora1.y) == -14503604){
+                        computadora1.ejecutarComputadora(prueba.get(indice));
+                        computadora1.mover(); 
+                        //indice++;
+                    }
+                    if(maze.getRGB(computadora1.x + 5, computadora1.y + 10) == -12629812 || maze.getRGB(computadora1.x + 5, computadora1.y + 10) == -1 || maze.getRGB(computadora1.x + 5, computadora1.y + 10) == -14503604){
+                        computadora1.ejecutarComputadora(prueba.get(indice));
+                        computadora1.mover(); 
+                        //indice++;
+                    }
+                    if(maze.getRGB(computadora1.x + 10, computadora1.y + 5) == -12629812 || maze.getRGB(computadora1.x + 10, computadora1.y + 5) == -1 || maze.getRGB(computadora1.x + 10, computadora1.y + 5) == -14503604){
+                        computadora1.ejecutarComputadora(prueba.get(indice));
+                        computadora1.mover(); 
+                        //indice++;
+                    }
+                }
             }
             indice++;
-        }
+        //}
     }
 
     public void up(){
@@ -120,20 +141,32 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
                 if(maze.getRGB(jugador1.x + 5, jugador1.y) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y) == -12629812 || maze.getRGB(jugador1.x + 5, jugador1.y) == -14503604){
                     up();
                 }
+                else{
+                   jugador1.parar();
+                }
                 break;
             case KeyEvent.VK_DOWN:
                 if( maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -12629812 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -14503604){
                     down();
                 }
+                else{
+                   jugador1.parar();
+                }
                 break;
             case KeyEvent.VK_LEFT:
                 if(maze.getRGB(jugador1.x, jugador1.y + 5) == -1 || maze.getRGB(jugador1.x, jugador1.y + 5) == -12629812 || maze.getRGB(jugador1.x, jugador1.y + 5) == -14503604){
                     left();
-                }                
+                }
+                else{
+                   jugador1.parar();
+                }      
                 break;
             case KeyEvent.VK_RIGHT:
                 if(maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -1 || maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -12629812 || maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -14503604){
                     right();
+                }
+                else{
+                   jugador1.parar();
                 }
                 break;
         }

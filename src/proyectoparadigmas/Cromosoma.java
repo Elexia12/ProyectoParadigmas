@@ -18,7 +18,7 @@ public class Cromosoma {
     
     private ArrayList<String> codificacion;
     private static final double PROB_CRUCE = 0.95;
-    private static final double PROB_MUTA = 0.05;
+    private static final double PROB_MUTA = 0.5;
     private static final int AZUL = Color.BLUE.getRGB();
     private static final int VERDE = Color.GREEN.getRGB();
     private int posIniX, posIniY, posFinX, posFinY;
@@ -123,7 +123,7 @@ public class Cromosoma {
     }
     
     public void generarCodificacion(){
-       int total = (int)(Math.random()*(1000-800+1)+800);
+       int total = (int)(Math.random()*(5000-800+1)+800);
        int direccion = 0;
        for(int i = 0; i < total; ++i){
           direccion = (int)(Math.random()*4);
@@ -149,23 +149,25 @@ public class Cromosoma {
        int cromFinX = 0;
        int cromFinY = 0;
        for(String mov : codificacion){
-           switch(mov){
-               case "up":
-                    cromFinY -= 1;  
-                    break;
-                case "down":
-                    cromFinY += 1;
-                    break;
-                case "left":
-                    cromFinX -= 1;  
-                    break;
-                case "right":
-                    cromFinX += 1; 
-                    break;
+           if(mov != null){
+            switch(mov){
+                case "up":
+                     cromFinY -= 1;  
+                     break;
+                 case "down":
+                     cromFinY += 1;
+                     break;
+                 case "left":
+                     cromFinX -= 1;  
+                     break;
+                 case "right":
+                     cromFinX += 1; 
+                     break;
+            }
            }
        }
        //Diferencia entre el final deseado y el obtenido por el cromosoma
-       aptitud = (posFinX - cromFinX) + (posFinY - cromFinY);
+       aptitud = (cromFinX + posFinX) - (cromFinY +posFinY);
        return aptitud;
     }
 }

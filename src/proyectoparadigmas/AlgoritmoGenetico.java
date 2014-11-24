@@ -123,7 +123,7 @@ public class AlgoritmoGenetico extends Thread{
     }
     
     public Cromosoma mejor(){
-       return poblacion[individuos-1];
+       return poblacion[0];
     }
     
     public void run(){
