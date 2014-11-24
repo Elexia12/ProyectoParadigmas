@@ -92,13 +92,7 @@ public class Participante extends Thread{
             }
         }
     
-
-    @Override
-    public void run() {
-        if(esCompu){
-            this.ejecutarComputadora(solucion);
-        }
-        
+    public void setSolucion(ArrayList<String> movimientos){
+       solucion = movimientos;
     }
-    
 }

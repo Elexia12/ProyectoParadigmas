@@ -46,7 +46,24 @@ public class Cromosoma {
     
     public void generarCodificacion(){
        int total = (int)(Math.random()*(1000-800+1)+800);
-       
+       int direccion = 0;
+       for(int i = 0; i < total; ++i){
+          direccion = (int)(Math.random()*(4-1+1)+1);
+          switch(direccion){
+              case 1:
+                  codificacion.add("up");
+              break;
+              case 2:
+                  codificacion.add("down");
+              break;
+              case 3:
+                  codificacion.add("left");
+              break;
+              case 4:
+                  codificacion.add("right");
+              break;
+          }
+       }
     }
     
     public int calcularAptitud(){
@@ -54,11 +71,4 @@ public class Cromosoma {
        
        return aptitud;
     }
-    
-    public String imprimir(){
-       String matriz = "";
-       
-       return matriz;
-    }
-    
 }
