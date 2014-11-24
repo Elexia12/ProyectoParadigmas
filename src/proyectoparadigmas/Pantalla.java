@@ -116,23 +116,32 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
                 if(maze.getRGB(jugador1.x + 5, jugador1.y) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y) == -12629812 || maze.getRGB(jugador1.x + 5, jugador1.y) == -14503604){
                     up();
                 }
+                else{
+                   jugador1.parar();
+                }
                 break;
             case KeyEvent.VK_DOWN:
                 if( maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -12629812 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -14503604){
-
                     down();
-                     System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
+                }
+                else{
+                   jugador1.parar();
                 }
                 break;
             case KeyEvent.VK_LEFT:
                 if(maze.getRGB(jugador1.x, jugador1.y + 5) == -1 || maze.getRGB(jugador1.x, jugador1.y + 5) == -12629812 || maze.getRGB(jugador1.x, jugador1.y + 5) == -14503604){
                     left();
-                     System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
-                }                
+                }
+                else{
+                   jugador1.parar();
+                }      
                 break;
             case KeyEvent.VK_RIGHT:
                 if(maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -1 || maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -12629812 || maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -14503604){
                     right();
+                }
+                else{
+                   jugador1.parar();
                 }
                 break;
         }
