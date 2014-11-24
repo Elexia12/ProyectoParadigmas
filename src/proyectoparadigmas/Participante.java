@@ -20,7 +20,7 @@ public class Participante extends Thread{
     int numMovs;
     ArrayList<String> solucion = new ArrayList<String>();
     
-    public Participante(boolean computadora, ArrayList<String> movimientos){
+    public Participante(boolean computadora){
         x = 240;
         y = 20;
         velx = 0;
@@ -30,7 +30,7 @@ public class Participante extends Thread{
         
         if(computadora){
             //Cargar la solucion con la que se va a mover, puede ser una lista estatica en otra clase o no se
-            solucion = movimientos;
+           // solucion = movimientos;
             numMovs = solucion.size();
         }
     }
@@ -93,12 +93,5 @@ public class Participante extends Thread{
         }
     
 
-    @Override
-    public void run() {
-        for(String mov : solucion){
-            if(esCompu){
-                this.ejecutarComputadora(mov);
-            }
-        }
-    }
+    
 }
