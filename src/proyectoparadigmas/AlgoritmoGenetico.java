@@ -122,7 +122,6 @@ public class AlgoritmoGenetico extends Thread{
     public void run(){
        algoritmo();
        computadora.setSolucion(mejor().getCodificacion());
-       computadora.start();
     }
     
 }

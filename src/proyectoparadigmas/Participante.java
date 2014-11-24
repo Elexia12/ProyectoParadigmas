@@ -27,19 +27,7 @@ public class Participante extends Thread{
         vely = 0;
         numMovs = 0;
         esCompu = computadora;
-        
-        if(computadora){
-            //Cargar la solucion con la que se va a mover, puede ser una lista estatica en otra clase o no se
-           // solucion = movimientos;
-            numMovs = solucion.size();
-        }
     }
-    
-   /* public boolean colision(int pixel1, int pixel2){
-        boolean hayColision = false;
-        if(pixel1 != )
-        return hayColision;
-    }*/
     
     public void mover(){
         x += velx;
@@ -52,7 +40,7 @@ public class Participante extends Thread{
     }
     
     public void arriba(){
-        vely = -0.5;
+        vely = -1;
         velx = 0;
         numMovs++;
     }
@@ -64,7 +52,7 @@ public class Participante extends Thread{
     }
     
     public void izquierda(){
-        velx = -0.5;
+        velx = -1;
         vely = 0;
         numMovs++;
     }

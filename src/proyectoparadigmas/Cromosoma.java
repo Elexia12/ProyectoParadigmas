@@ -6,6 +6,8 @@
 
 package proyectoparadigmas;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -17,13 +19,31 @@ public class Cromosoma {
     private ArrayList<String> codificacion;
     private static final double PROB_CRUCE = 0.95;
     private static final double PROB_MUTA = 0.05;
+    private static final int AZUL = Color.BLUE.getRGB();
+    private static final int VERDE = Color.GREEN.getRGB();
+    private int posIniX, posIniY, posFinX, posFinY;
+    private int mLaberinto[][];
     
     public Cromosoma(){
         codificacion = new ArrayList<String>();
+        posIniX = 240;
+        posIniY = 20;
+        posFinX = 265;
+        posFinY = 372;
     }
         
     public ArrayList<String> getCodificacion(){
        return codificacion;
+    }
+    
+    
+    public void obtenerMatriz(BufferedImage m){
+        mLaberinto = new int[m.getHeight()][m.getWidth()];
+        for(int i=0; i<mLaberinto.length; i++){
+            for(int j=0; j<mLaberinto[0].length; j++){
+                mLaberinto[i][j] = m.getRGB(i, j);
+            }
+        }
     }
     
     public void cruce(Cromosoma padre, Cromosoma madre){
@@ -126,7 +146,26 @@ public class Cromosoma {
     
     public int calcularAptitud(){
        int aptitud = 1;
-       
+       int cromFinX = 0;
+       int cromFinY = 0;
+       for(String mov : codificacion){
+           switch(mov){
+               case "up":
+                    cromFinY -= 1;  
+                    break;
+                case "down":
+                    cromFinY += 1;
+                    break;
+                case "left":
+                    cromFinX -= 1;  
+                    break;
+                case "right":
+                    cromFinX += 1; 
+                    break;
+           }
+       }
+       //Diferencia entre el final deseado y el obtenido por el cromosoma
+       aptitud = (posFinX - cromFinX) + (posFinY - cromFinY);
        return aptitud;
     }
 }

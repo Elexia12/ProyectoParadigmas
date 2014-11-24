@@ -76,6 +76,7 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         g2.fill(new Ellipse2D.Double(jugador1.x, jugador1.y, 10, 10));
         g2.setColor(Color.yellow);
         g2.fill(new Ellipse2D.Double(computadora1.x, computadora1.y, 10, 10));
+      //  System.out.println(computadora1.y);
         
     }
 
@@ -117,23 +118,25 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         
         switch(code){
             case KeyEvent.VK_UP:
-                if(maze.getRGB(jugador1.x + 5, jugador1.y) == -1){
+                if(maze.getRGB(jugador1.x + 5, jugador1.y) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -12629812){
                     up();
-                    
+                    System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
                 }
                 break;
             case KeyEvent.VK_DOWN:
-                if( maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -1){
+                if( maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -12629812){
                     down();
+                     System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
                 }
                 break;
             case KeyEvent.VK_LEFT:
-                if(maze.getRGB(jugador1.x, jugador1.y + 5) == -1){
+                if(maze.getRGB(jugador1.x, jugador1.y + 5) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -12629812){
                     left();
+                     System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
                 }                
                 break;
             case KeyEvent.VK_RIGHT:
-                if(maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -1){
+                if(maze.getRGB(jugador1.x + 10, jugador1.y + 5) == -1 || maze.getRGB(jugador1.x + 5, jugador1.y + 10) == -12629812){
                     right();
                 }
                 break;
