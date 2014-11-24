@@ -45,6 +45,10 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
             prueba.add("down");
             prueba.add("down");
             prueba.add("up");
+            prueba.add("up");
+            prueba.add("up");
+            prueba.add("up");
+            prueba.add("up");
         }
         indice = 0;
         jugador1 = new Participante(false);
@@ -80,12 +84,10 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     public void actionPerformed(ActionEvent ae) {
         repaint();
         jugador1.mover();
-        computadora1.mover();
         if(indice < prueba.size()){
             computadora1.ejecutarComputadora(prueba.get(indice));
+            computadora1.mover();
         }
-        if(indice == prueba.size())
-            computadora1.parar();
         indice++;
     }
 
