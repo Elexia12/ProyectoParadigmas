@@ -31,7 +31,7 @@ public class Participante extends Thread{
         if(computadora){
             //Cargar la solucion con la que se va a mover, puede ser una lista estatica en otra clase o no se
            // solucion = movimientos;
-            numMovs = solucion.size();
+           numMovs = solucion.size();
         }
     }
     
