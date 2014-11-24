@@ -40,7 +40,22 @@ public class Cromosoma {
        String temp = "";
        double prob = Math.random();
        if(prob < PROB_MUTA){
-          
+          int pos = (int)(Math.random()*codificacion.size());
+          int direccion = (int)(Math.random()*(4-1+1)+1);
+          switch(direccion){
+              case 1:
+                  codificacion.set(pos, "up");
+              break;
+              case 2:
+                  codificacion.set(pos, "down");
+              break;
+              case 3:
+                  codificacion.set(pos, "left");
+              break;
+              case 4:
+                  codificacion.set(pos, "right");
+              break;
+          }
        }
     }
     
