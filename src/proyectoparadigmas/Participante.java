@@ -89,7 +89,6 @@ public class Participante extends Thread{
     public void run() {
         if(esCompu){
             this.ejecutarComputadora();
-            System.out.println("Soy computadora");
         }
         
     }

@@ -36,7 +36,7 @@ public class AlgoritmoGenetico extends Thread{
        int max = 1;
        for(int i = 0; i < individuos; ++i){
           poblacion[i] = new Cromosoma();
-          poblacion[i].generarCuadroMagico();
+          poblacion[i].generarCodificacion();
        }
        calcularAptitud();
        ordenar();
@@ -57,7 +57,6 @@ public class AlgoritmoGenetico extends Thread{
              hijos[i].cruce(seleccionarPadres(max),seleccionarPadres(max));
              //mutacion
              hijos[i].mutacion();
-             System.out.println("cilclo: " + ciclo);
           }
           //sustitucion de individuos
           sustitucion(hijos);

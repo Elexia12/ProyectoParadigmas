@@ -33,6 +33,7 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     Participante jugador1;
     Participante computadora1;
     AlgoritmoGenetico algGene;
+    int contador = 1;
     
     public Pantalla(){
         ArrayList<String> prueba = new ArrayList<String>();
@@ -64,7 +65,6 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
         g2.fill(new Ellipse2D.Double(jugador1.x, jugador1.y, 10, 10));
         g2.setColor(Color.yellow);
         g2.fill(new Ellipse2D.Double(computadora1.x, computadora1.y, 10, 10));
-        System.out.println(computadora1.y);
         
     }
 
@@ -99,12 +99,14 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
     @Override
     public void keyPressed(KeyEvent ke) {
         int code = ke.getKeyCode();
+        System.out.println(contador);
+        contador++;
         
         switch(code){
             case KeyEvent.VK_UP:
                 if(maze.getRGB(jugador1.x + 5, jugador1.y) == -1){
                     up();
-                    System.out.println("Color en pos: " + maze.getRGB((int)jugador1.x, (int)jugador1.y));
+                    
                 }
                 break;
             case KeyEvent.VK_DOWN:

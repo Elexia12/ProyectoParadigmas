@@ -6,21 +6,23 @@
 
 package proyectoparadigmas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author b17016
  */
 public class Cromosoma {
     
-    private String codificacion;
+    private ArrayList<String> codificacion;
     private static final double PROB_CRUCE = 0.95;
     private static final double PROB_MUTA = 0.05;
     
     public Cromosoma(){
-        codificacion = "";
+        codificacion = new ArrayList<String>();
     }
         
-    public String getCodificacion(){
+    public ArrayList<String> getCodificacion(){
        return codificacion;
     }
     
@@ -42,7 +44,8 @@ public class Cromosoma {
        }
     }
     
-    public void generarCuadroMagico(){
+    public void generarCodificacion(){
+       int total = (int)(Math.random()*(1000-800+1)+800);
        
     }
     
