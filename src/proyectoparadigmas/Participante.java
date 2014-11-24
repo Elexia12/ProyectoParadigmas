@@ -91,4 +91,8 @@ public class Participante extends Thread{
                     break;
             }
         }
+    
+    public void setSolucion(ArrayList<String> movimientos){
+       solucion = movimientos;
+    }
 }
