@@ -99,6 +99,10 @@ public class Pantalla extends JPanel implements ActionListener, KeyListener{
                         computadora1.mover(); 
                         //indice++;
                     }
+                    if(maze.getRGB(computadora1.x, computadora1.y + 5) == -16777216 || maze.getRGB(computadora1.x + 5, computadora1.y) == -16777216 || maze.getRGB(computadora1.x + 5, computadora1.y + 10) == -16777216 || maze.getRGB(computadora1.x + 10, computadora1.y + 5) == -16777216){
+                       computadora1.parar();
+                       computadora1.mover();
+                    }
                 }
             }
             indice++;
